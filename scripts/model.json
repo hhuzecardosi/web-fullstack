@@ -1,0 +1,59 @@
+{
+    "user" : {
+        "pseudo" : {"type": "String"},
+        "email" : {"type" : "String"},
+        "password" : {"type" : "String"},
+        "decks" : [
+            {
+                "from" : {"type": "Date"},
+                "to" : {"type": "Date"},
+                "choices": [
+                    {
+                        "date" : {"type": "Date"},
+                        "player": {"type" : "ObjectId", "ref": "Player"}
+                    }
+                ]
+            }
+        ],
+        "blacklist" : [
+            {
+                "player" : {"type" : "ObjectId", "ref": "Player"},
+                "since" : {"type" : "Date"}
+            }
+        ]
+    },
+    "player" : {
+        "external_id" : {"type": "String"},
+        "name" : {"type": "String"},
+        "team" : {"type": "String"},
+        "stats" : [
+            {
+                "date" : {"type": "Date"},
+                "match" : {"type": "String"},
+                "pts" : {"type": "Numeric"},
+                "reb" : {"type": "Numeric"},
+                "ast" : {"type": "Numeric"},
+                "stl" : {"type": "Numeric"},
+                "blk" : {"type": "Numeric"},
+                "ftm" : {"type": "Numeric"},
+                "fgm" : {"type": "Numeric"},
+                "fg3m" : {"type": "Numeric"},
+                "minus" : {"type" : "Numeric"},
+                "score" : {"type": "Numeric"},
+                "picks" : {"type": "Numeric"}
+            }
+        ]
+    },
+    "team" : {
+        "name" : {"type": "String"},
+        "external_id" : {"type": "String"},
+        "code" : {"type": "String"},
+        "players" : [{"type": "ObjectId", "ref": "Player"}]
+    },
+    "games" : {
+        "date" : {"type": "Date"},
+        "h_team": {"type": "String"},
+        "v_team": {"type": "String"},
+        "score" : {"type" : "String"}
+    }
+}
